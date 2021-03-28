@@ -25,6 +25,7 @@
             <MenuItem Header="Файл">
                 <MenuItem Click="ImportFromFile" Header="Открыть файл" />
                 <MenuItem Click="SaveInitialData" Header="Сохранить в файл" />
+                <MenuItem Click="SaveGraph" Header="Сохранить график" />
             </MenuItem>
             <MenuItem Click="ShowHelp" Header="Справка" />
             <MenuItem Click="Exit" Header="Выход" />
@@ -37,7 +38,7 @@
         <Button Content="Start" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="65" Grid.Row="1" Grid.Column="0" Margin="10,0,0,239" Click="Button_Click" Height="24"/>
         <xctk:PropertyGridEditorDoubleUpDown x:Name="leftBorderT" HorizontalAlignment="Right" VerticalAlignment="Top" Width="65" Grid.Row="1" Background="#FFDDDDDD" Height="24" RenderTransformOrigin="0.5,0.5" Margin="0,38,193,0" ShowButtonSpinner="True" Value="-10" />
         <xctk:PropertyGridEditorDoubleUpDown x:Name="rightBorderT" HorizontalAlignment="Right" VerticalAlignment="Top" Width="65" Grid.Row="1" Background="#FFDDDDDD" Height="24" RenderTransformOrigin="0.5,0.5" Margin="0,38,53,0" ShowButtonSpinner="True" Value="10" />
-        <xctk:PropertyGridEditorDoubleUpDown x:Name="stepT" HorizontalAlignment="Right" VerticalAlignment="Top" Width="65" Grid.Row="1" Background="#FFDDDDDD" Height="24" RenderTransformOrigin="0.5,0.5" Margin="0,38,123,0" Minimum="0.1" Value="1" ShowButtonSpinner="True" Text="1" Increment="0.1" />
+        <xctk:PropertyGridEditorDoubleUpDown x:Name="stepT" HorizontalAlignment="Right" VerticalAlignment="Top" Width="65" Grid.Row="1" Background="#FFDDDDDD" Height="24" RenderTransformOrigin="0.5,0.5" Margin="0,38,123,0" Minimum="0.001" Value="1" ShowButtonSpinner="True" Text="1" Increment="0.1" />
         <xctk:PropertyGridEditorDoubleUpDown x:Name="coefT" HorizontalAlignment="Right" VerticalAlignment="Top" Width="65" Grid.Row="1" Background="#FFDDDDDD" Height="25" RenderTransformOrigin="0.5,0.5" Margin="0,92,193,0" ShowButtonSpinner="True" Value="10" Increment="0.1" Text="10" />
         <Label Content="Left Border" HorizontalAlignment="Left" Margin="6,13,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="69"/>
         <Label Content="Step" HorizontalAlignment="Left" Margin="94,13,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="35"/>
