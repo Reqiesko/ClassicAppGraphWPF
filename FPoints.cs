@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using OxyPlot;
 using OxyPlot.Series;
 
 namespace Lab3WPF
 {
-    public partial class FPoints
+    public class FPoints
     {
-        public FunctionSeries logic(double leftBorder, double step, double rightBorder, double coef)
+        public double X { get; set; }
+        public double Y { get; set; }
+        public FunctionSeries Logic(double leftBorder, double step, double rightBorder, double coef)
         {
             var serie = new FunctionSeries();
             for (double i = leftBorder; i <= rightBorder; i += step)
@@ -18,6 +18,7 @@ namespace Lab3WPF
                 double y = (double)(coef * Math.Cosh(i / coef));
                 serie.Points.Add(new DataPoint(i, y));
             }
+           
             return serie;
         }
     }

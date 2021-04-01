@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab3WPF"
         xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="Lab3WPF.MainWindow"
         mc:Ignorable="d"
-        Title="Лабараторная №3, График функции." Height="450" Width="800" ResizeMode="NoResize">
+        Title="Лабораторная №3, График функции." Height="450" Width="800" ResizeMode="NoResize">
     <Grid x:Name="LayoutRoot" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
@@ -16,19 +17,19 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="268" />
             <ColumnDefinition />
-
         </Grid.ColumnDefinitions>
         <Menu
             Grid.ColumnSpan="2"
             Height="20"
             VerticalAlignment="Top">
-            <MenuItem Header="Файл">
-                <MenuItem Click="ImportFromFile" Header="Открыть файл" />
-                <MenuItem Click="SaveInitialData" Header="Сохранить в файл" />
-                <MenuItem Click="SaveGraph" Header="Сохранить график" />
+            <MenuItem Header="File">
+                <MenuItem Click="ImportFromFile" Header="Open File" />
+                <MenuItem Click="SaveInitialData" Header="Save in file" />
+                <MenuItem Click="SaveGraph" Header="Save Graphic" />
+                <MenuItem Click="SaveTable" Header="Save Table" />
             </MenuItem>
-            <MenuItem Click="ShowHelp" Header="Справка" />
-            <MenuItem Click="Exit" Header="Выход" />
+            <MenuItem Click="ShowHelp" Header="Information" />
+            <MenuItem Click="Exit" Header="Exit" />
         </Menu>
         <oxy:PlotView
         x:Name="Plot"
@@ -53,5 +54,12 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
+        <DataGrid x:Name="tableOfValue" HorizontalAlignment="Left" Height="214" Margin="10,177,0,0" Grid.Row="1" VerticalAlignment="Top" Width="205" AutoGenerateColumns="False" ItemsSource="{DynamicResource ResourceKey=FPoints}" IsReadOnly="True">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="X" Binding="{Binding Path=X}" Width="90"  />
+                <DataGridTextColumn Header="Y" Binding="{Binding Path=Y}" Width="110"  />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

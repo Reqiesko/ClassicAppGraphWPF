@@ -1,24 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.IO;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using OxyPlot;
-using OxyPlot.Wpf;
-using OxyPlot.Series;
 using OxyPlot.Axes;
 using Microsoft.Win32;
-using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace Lab3WPF
 {
@@ -39,7 +26,7 @@ namespace Lab3WPF
             errBB,
             errStep
         };
-
+        List<FPoints> valueList = new List<FPoints> { };
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             double coef = (double)coefT.Value;
@@ -80,12 +67,12 @@ namespace Lab3WPF
                 model.LegendPosition = LegendPosition.RightBottom;
                 model.LegendPlacement = LegendPlacement.Outside;
                 model.LegendOrientation = LegendOrientation.Horizontal;
-                var serie = point.logic(leftBorder, step, rightBorder, coef);
+                var serie = point.Logic(leftBorder, step, rightBorder, coef);
                 model.Series.Add(serie);
-                var yAxis = new OxyPlot.Axes.LinearAxis();
+                var yAxis = new LinearAxis();
                 yAxis.AbsoluteMinimum = -100;
                 yAxis.AbsoluteMaximum = 100;
-                var xAxis = new OxyPlot.Axes.LinearAxis { Position = AxisPosition.Bottom };
+                var xAxis = new LinearAxis { Position = AxisPosition.Bottom };
                 if (coef < 0.30 && coef > -0.30)
                 {
                     xAxis.AbsoluteMinimum = -5;
@@ -97,6 +84,14 @@ namespace Lab3WPF
                 model.Axes.Add(xAxis);
                 model.PlotType = PlotType.Cartesian;
                 Plot.Model = model;
+                
+                for (int i = 0; i < serie.Points.Count; i++)
+                {
+                    valueList.Add(new FPoints { X = serie.Points[i].X, Y = serie.Points[i].Y });
+                    
+                }
+                tableOfValue.CanUserSortColumns = false;
+                tableOfValue.ItemsSource = valueList;
             }
             Console.WriteLine(coef + " " + leftBorder + " " + step + " " + rightBorder);
         }
@@ -145,6 +140,17 @@ namespace Lab3WPF
             }
         }
 
+        private void SaveTable(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                StreamWriter sr = new StreamWriter(saveFileDialog.FileName);
+                for (int i = 0; i < tableOfValue.Items.Count; i++)
+                sr.Write(valueList[i].X.ToString().PadRight(4) + " " + valueList[i].Y + "\n");
+                sr.Close();
+            }
+        }
 
         private void Exit(object sender, RoutedEventArgs e)
         {
@@ -158,6 +164,5 @@ namespace Lab3WPF
                "About Programm",
                 MessageBoxButton.OK);
         }
-
     }
 }
