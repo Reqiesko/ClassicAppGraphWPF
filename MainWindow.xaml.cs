@@ -29,6 +29,8 @@ namespace Lab3WPF
         List<FPoints> valueList = new List<FPoints> { };
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            valueList.Clear();
+            tableOfValue.ItemsSource = null;
             double coef = (double)coefT.Value;
             double leftBorder = (double)leftBorderT.Value;
             double rightBorder = (double)rightBorderT.Value;
@@ -88,7 +90,6 @@ namespace Lab3WPF
                 for (int i = 0; i < serie.Points.Count; i++)
                 {
                     valueList.Add(new FPoints { X = serie.Points[i].X, Y = serie.Points[i].Y });
-                    
                 }
                 tableOfValue.CanUserSortColumns = false;
                 tableOfValue.ItemsSource = valueList;

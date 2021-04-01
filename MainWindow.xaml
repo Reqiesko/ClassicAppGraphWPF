@@ -54,11 +54,11 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <DataGrid x:Name="tableOfValue" HorizontalAlignment="Left" Height="214" Margin="10,177,0,0" Grid.Row="1" VerticalAlignment="Top" Width="205" AutoGenerateColumns="False" ItemsSource="{DynamicResource ResourceKey=FPoints}" IsReadOnly="True">
+        <DataGrid x:Name="tableOfValue" HorizontalAlignment="Left" Height="214" Margin="10,177,0,0" Grid.Row="1" VerticalAlignment="Top" Width="221" AutoGenerateColumns="False" IsReadOnly="True">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="X" Binding="{Binding Path=X}" Width="90"  />
-                <DataGridTextColumn Header="Y" Binding="{Binding Path=Y}" Width="110"  />
+                <DataGridTextColumn Header="Y" Binding="{Binding Path=Y}" Width="100"  />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
