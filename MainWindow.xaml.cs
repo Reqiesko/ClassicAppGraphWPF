@@ -64,7 +64,7 @@ namespace Lab3WPF
             }
             else
             {
-                var model = new PlotModel { Title = "График функции A/2*(e^(x/a)+e^(-x/a))" };
+                var model = new PlotModel { };
                 FPoints point = new FPoints();
                 model.LegendPosition = LegendPosition.RightBottom;
                 model.LegendPlacement = LegendPlacement.Outside;
@@ -126,7 +126,7 @@ namespace Lab3WPF
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog() == true)
             {
-                StreamWriter sr = new StreamWriter(saveFileDialog.FileName);
+                StreamWriter sr = new StreamWriter(saveFileDialog.FileName + ".txt");
                 sr.Write(leftBorderT.Value + " " + stepT.Value + " " + rightBorderT.Value + " " + coefT.Value);
                 sr.Close();
             }
@@ -137,7 +137,7 @@ namespace Lab3WPF
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog() == true)
             {
-                Plot.SaveBitmap(saveFileDialog.FileName);
+                Plot.SaveBitmap(saveFileDialog.FileName + ".bmp");
             }
         }
 
@@ -146,7 +146,7 @@ namespace Lab3WPF
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog() == true)
             {
-                StreamWriter sr = new StreamWriter(saveFileDialog.FileName);
+                StreamWriter sr = new StreamWriter(saveFileDialog.FileName + ".txt");
                 for (int i = 0; i < tableOfValue.Items.Count; i++)
                 sr.Write(valueList[i].X.ToString().PadRight(4) + " " + valueList[i].Y + "\n");
                 sr.Close();

@@ -61,5 +61,6 @@
                 <DataGridTextColumn Header="Y" Binding="{Binding Path=Y}" Width="100"  />
             </DataGrid.Columns>
         </DataGrid>
+        <Image Margin="80,121,26,229" Source="Image2.png" Stretch="Fill" Grid.Row="1"/>
     </Grid>
 </Window>
