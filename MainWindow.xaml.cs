@@ -126,7 +126,7 @@ namespace Lab3WPF
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog() == true)
             {
-                StreamWriter sr = new StreamWriter(saveFileDialog.FileName + ".txt");
+                StreamWriter sr = new StreamWriter(saveFileDialog.FileName);
                 sr.Write(leftBorderT.Value + " " + stepT.Value + " " + rightBorderT.Value + " " + coefT.Value);
                 sr.Close();
             }
@@ -146,9 +146,11 @@ namespace Lab3WPF
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog() == true)
             {
-                StreamWriter sr = new StreamWriter(saveFileDialog.FileName + ".txt");
+                StreamWriter sr = new StreamWriter(saveFileDialog.FileName);
                 for (int i = 0; i < tableOfValue.Items.Count; i++)
-                sr.Write(valueList[i].X.ToString().PadRight(4) + " " + valueList[i].Y + "\n");
+                {
+                    sr.WriteLine(valueList[i].X.ToString().PadRight(4) + " " + valueList[i].Y);
+                }
                 sr.Close();
             }
         }
